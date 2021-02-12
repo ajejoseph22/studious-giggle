@@ -1,8 +1,20 @@
-const { earthRadiusInKm, piRadian } = require("./constants");
+const {
+  earthRadiusInKm,
+  piRadian,
+  centralLondonCoordinates,
+} = require("./constants");
+const data = require("../../data/partners.json");
+
+/**
+ * Returns the radian equivalent of a degree value
+ * @param {number} degree - the degree value
+ */
+function degreeToRadian(degree) {
+  return degree * piRadian;
+}
 
 /**
  * Returns the distance between 2 coordinates (in KM)
- * @constructor
  * @param {Array.<number>} arrayOfCoordinates - the first latitude coordinate
  */
 function getDistanceBetweenCoordinates(arrayOfCoordinates) {
@@ -23,24 +35,63 @@ function getDistanceBetweenCoordinates(arrayOfCoordinates) {
   return acos(centralAngle) * earthRadiusInKm;
 }
 
-/**
- * Returns the radian equivalent of a degree value
- * @constructor
- * @param {number} degree - the degree value
- */
-function degreeToRadian(degree) {
-  return degree * piRadian;
-}
-
 /** Returns an array of 2 coordinate values of type 'number'
- * @constructor
  * @param {string} coordinateString - the first latitude coordinate
  */
 function getCoordinatesFromString(coordinateString) {
   return coordinateString.split(",").map((value) => +value);
 }
 
+/** Returns a method for sorting a json array by a given property
+ * in ascending order
+ * @param {string} property - the property by which we want to sort
+ */
+function getCompareFunction(property) {
+  return (a, b) => {
+    if (a[property] > b[property]) {
+      return 1;
+    } else if (a[property] < b[property]) {
+      return -1;
+    }
+
+    return 0;
+  };
+}
+
+/**
+ * Returns the matching partners (partners that have offices within
+ * 100KM of central London), limiting their information to organization
+ * name and offices as a JSON array
+ */
+function getMatchingPartners() {
+  return data.reduce((acc, { organization, offices }) => {
+    if (
+      offices.find(
+        ({ coordinates }) =>
+          getDistanceBetweenCoordinates(
+            centralLondonCoordinates.concat(
+              getCoordinatesFromString(coordinates)
+            )
+          ) <= 100
+      )
+    ) {
+      acc.push({ organization, offices });
+    }
+    return acc;
+  }, []);
+}
+
+/** Returns a a list of partners by organization name in ascending order
+ * @param {Array} partners - the property by which we want to sort
+ */
+function sortPartnersByNameAscending(partners) {
+  return partners.sort(getCompareFunction("organization"));
+}
+
 module.exports = {
+  getMatchingPartners,
+  sortPartnersByNameAscending,
   getDistanceBetweenCoordinates,
-  getCoordinatesFromString,
+  degreeToRadian,
+  getCoordinatesFromString
 };
