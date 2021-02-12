@@ -28,8 +28,9 @@ describe("app", () => {
     // Assert
     expect(await fileExistsPromise(pathToMatchingPartners)).toBe(true);
 
+    const readFilePromise = promisify(readFile);
     const matchingPartners = JSON.parse(
-      await promisify(readFile)(pathToMatchingPartners)
+      await readFilePromise(pathToMatchingPartners)
     );
 
     expect(matchingPartners.length).toBe(2);

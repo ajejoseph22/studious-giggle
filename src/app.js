@@ -11,10 +11,9 @@ async function app() {
   const sortedMatchingPartnersData = JSON.stringify(
     sortPartnersByNameAscending(getMatchingPartners())
   );
-  await promisify(writeFile)(
-    pathToMatchingPartners,
-    sortedMatchingPartnersData
-  );
+  const writeFilePromise = promisify(writeFile);
+
+  await writeFilePromise(pathToMatchingPartners, sortedMatchingPartnersData);
 }
 
 module.exports = app;
