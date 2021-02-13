@@ -111,9 +111,10 @@ describe("getCompareFunction", () => {
       { name: "Adrian", age: 25 },
       { name: "Adrian", age: 19 },
     ];
+    const propertyToSortBy = "name";
 
     // Act
-    const compareFn = getCompareFunction("name");
+    const compareFn = getCompareFunction(propertyToSortBy);
     const itemsSortedByNameAscending = items.sort(compareFn);
 
     // Assert
