@@ -12,7 +12,6 @@ R2. Program that reads a list of partners and outputs a sorted list of matching 
 ## Installation Instructions
 
 * Clone the repo
-* Checkout the `master` branch
 * Run `npm install` in the root directory of the project, to install dependencies
 * Run `npm start` to start a local development server. This will start the app and output the list of matching partners in `data/matching-partners.json`.
 
