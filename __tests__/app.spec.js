@@ -21,7 +21,7 @@ beforeAll(async () => {
 
 describe("app", () => {
   it(`should create a file called matching-partners.json containing 
-      an array of matching partners' data (organization name and office addresses), sorted by company name`, async () => {
+      an array of partners' data (limited to organization name and office addresses)`, async () => {
     // Act
     await app();
 
