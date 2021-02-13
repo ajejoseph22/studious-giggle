@@ -15,7 +15,8 @@ function degreeToRadian(degree) {
 
 /**
  * Returns the distance between 2 coordinates (in KM)
- * @param {Array.<number>} arrayOfCoordinates - the first latitude coordinate
+ * @param {Array.<number>} arrayOfCoordinates - an array of
+ * 2 sets of coordinates in the form [lat1, long1, lat2, long2]
  */
 function getDistanceBetweenCoordinates(arrayOfCoordinates) {
   const { cos, sin, abs, acos } = Math;
@@ -36,7 +37,7 @@ function getDistanceBetweenCoordinates(arrayOfCoordinates) {
 }
 
 /** Returns an array of 2 coordinate values of type 'number'
- * @param {string} coordinateString - the first latitude coordinate
+ * @param {string} coordinateString - the stringified coordinate
  */
 function getCoordinatesFromString(coordinateString) {
   return coordinateString.split(",").map((value) => +value);
