@@ -5,6 +5,7 @@ const {
   getDistanceBetweenCoordinates,
   degreeToRadian,
   getCoordinatesFromString,
+  getCompareFunction,
 } = require("../src/util/methods");
 
 describe("getDistanceBetweenCoordinates", () => {
@@ -99,6 +100,29 @@ describe("degreeToRadian", () => {
     // Assert
     const expectedRadian = 1.5708;
     expect(+radian.toFixed(4)).toBe(expectedRadian);
+  });
+});
+
+describe("getCompareFunction", () => {
+  it("should return the correct compare function", () => {
+    // Arrange
+    const items = [
+      { name: "Phil", age: 25 },
+      { name: "Adrian", age: 25 },
+      { name: "Adrian", age: 19 },
+    ];
+
+    // Act
+    const compareFn = getCompareFunction("name");
+    const itemsSortedByNameAscending = items.sort(compareFn);
+
+    // Assert
+    const expectedResult = [
+      { name: "Adrian", age: 25 },
+      { name: "Adrian", age: 19 },
+      { name: "Phil", age: 25 },
+    ];
+    expect(itemsSortedByNameAscending).toEqual(expectedResult);
   });
 });
 

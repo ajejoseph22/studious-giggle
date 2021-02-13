@@ -95,5 +95,6 @@ module.exports = {
   sortPartnersByNameAscending,
   getDistanceBetweenCoordinates,
   degreeToRadian,
-  getCoordinatesFromString
+  getCoordinatesFromString,
+  getCompareFunction
 };
