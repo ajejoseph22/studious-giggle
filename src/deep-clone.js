@@ -13,14 +13,14 @@ function deepClone(inputObject) {
     return inputObject;
 
   // Create an array or object to hold the cloned values
-  const outputObject = Array.isArray(inputObject) ? [] : {};
+  const output = Array.isArray(inputObject) ? [] : {};
 
   // Recursively copy nested objects and arrays
   for (const key in inputObject) {
-    outputObject[key] = deepClone(inputObject[key]);
+    output[key] = deepClone(inputObject[key]);
   }
 
-  return outputObject;
+  return output;
 }
 
 module.exports = deepClone;
