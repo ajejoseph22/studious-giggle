@@ -37,6 +37,7 @@ function getDistanceBetweenCoordinates(arrayOfCoordinates) {
 }
 
 /** Returns an array of 2 coordinate values of type 'number'
+ * from a coordinateString
  * @param {string} coordinateString - the stringified coordinate
  */
 function getCoordinatesFromString(coordinateString) {
@@ -62,7 +63,7 @@ function getCompareFunction(property) {
 /**
  * Returns the matching partners (partners that have offices within
  * 100KM of central London), limiting their information to organization
- * name and offices as a JSON array
+ * name and offices, as a JSON array
  */
 function getMatchingPartners() {
   return data.reduce((acc, { organization, offices }) => {
@@ -82,8 +83,8 @@ function getMatchingPartners() {
   }, []);
 }
 
-/** Returns a a list of partners by organization name in ascending order
- * @param {Array} partners - the property by which we want to sort
+/** Returns a a list of partners, sorted by organization name in ascending order
+ * @param {Array} partners - the array of partners to be sorted
  */
 function sortPartnersByNameAscending(partners) {
   return partners.sort(getCompareFunction("organization"));
