@@ -11,8 +11,6 @@ R2. Program that reads a list of partners and outputs a sorted list of matching 
 
 ## Installation Instructions
 
-## To run the app locally, follow the following steps:
-
 * Clone the repo
 * Checkout the `master` branch
 * Run `npm install` in the root directory of the project, to install dependencies
