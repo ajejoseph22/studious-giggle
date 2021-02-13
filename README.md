@@ -1,8 +1,8 @@
 # studious-giggle
 
-Program that reads a list of partners and outputs a sorted list of matching partners (with offices within 100km of central London), using the Great circle distance formula to calculate distance between 2 given coordinates.
+R1. Method to deep clone an object
 
-## Installation Instructions
+R2. Program that reads a list of partners and outputs a sorted list of matching partners (with offices within 100km of central London), using the Great circle distance formula to calculate distance between 2 given coordinates.
 
 ## Stack
 
@@ -10,8 +10,6 @@ Program that reads a list of partners and outputs a sorted list of matching part
 * Jest
 
 ## Installation Instructions
-
-## To run the app locally, follow the following steps:
 
 * Clone the repo
 * Checkout the `master` branch
